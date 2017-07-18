@@ -1,0 +1,31 @@
+# Default I2C address for device.
+BME280_I2CADDR_DEFAULT        = 0x
+
+# Register addresses.
+BME280_HUM_LSB             = 0xFE
+BME280_HUM_MSB             = 0xFD
+BME280_TEMP_XLSB           = 0xFC
+BME280_TEMP_LSB            = 0xFB
+BME280_TEMP_MSB            = 0xFA
+BME280_PRESS_XLSB           = 0xF9
+BME280_PRESS_LSB            = 0xF8
+BME280_PRESS_MSB            = 0xF7
+BME280_CONFIG               = 0xF5
+BME280_CTRL_MEAS            = 0xF4
+BME280_STATUS               = 0xF3
+BME280_CRTL_HUM             = 0xF2
+BME280_RESET                = 0xE0
+BME_280_ID                  = 0xD0
+
+# Calibration Register : TODO
+
+# Configuration register values.
+MCP9808_REG_CONFIG_SHUTDOWN    = 0x0100
+MCP9808_REG_CONFIG_CRITLOCKED  = 0x0080
+MCP9808_REG_CONFIG_WINLOCKED   = 0x0040
+MCP9808_REG_CONFIG_INTCLR      = 0x0020
+MCP9808_REG_CONFIG_ALERTSTAT   = 0x0010
+MCP9808_REG_CONFIG_ALERTCTRL   = 0x0008
+MCP9808_REG_CONFIG_ALERTSEL    = 0x0002
+MCP9808_REG_CONFIG_ALERTPOL    = 0x0002
+MCP9808_REG_CONFIG_ALERTMODE   = 0x0001
