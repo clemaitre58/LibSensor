@@ -214,4 +214,49 @@ class BME280(object):
             h5 = (h5 << 4)
             self.dig_H5 = h5 | (self._device.readU8(BME280_DIG_H5) >> 4 & 0x0F)
 
+        def _read_raw_temp(sel):
+            """TODO: Docstring for _read_raw_temp.
+            :returns: TODO
 
+            """
+            return raw
+        def _read_raw_pressure(self):
+            """TODO: Docstring for _read_raw_pressure.
+            :returns: TODO
+
+            """
+            return raw
+        def _read_raw_humidity(self):
+            """TODO: Docstring for _read_raw_humidity.
+            :returns: TODO
+
+            """
+            return raw
+        def read_temperature(self):
+            """TODO: Docstring for read_temperature.
+
+            :arg1: TODO
+            :returns: TODO
+
+            """
+            return temp
+        def read_pressure(self):
+            """TODO: Docstring for read_pressure.
+
+            :f: TODO
+            :returns: TODO
+
+            """
+            return p
+        def read_humidity(self):
+            """TODO: Docstring for read_humidity.
+            :returns: TODO
+
+            """
+            return h
+        def read_dewpoint(self):
+            """TODO: Docstring for read_dewpoint.
+            :returns: TODO
+
+            """
+            return dewpoint
