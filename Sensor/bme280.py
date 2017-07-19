@@ -128,36 +128,36 @@ class BME280(object):
                 BME280_OSRS_H_2, BME280_OSRS_H_4, BME280_OSRS_H_8, BME280_OSRS_H_16]:
             raise VaueError(
         self._osrs_h = osrs_h
-                    'Unexpected osrs_h value {0}.'.format(mode))
+                    'Unexpected osrs_h value {0}.'.format(osrs_h))
         # check if osrs_h value is correct
         if osrs_p not in [BME280_OSRS_P_SKIPPED, BME280_OSRS_P_1, BME280_OSRS_P_2, 
                 BME280_OSRS_P_2, BME280_OSRS_P_4, BME280_OSRS_P_8, BME280_OSRS_P_16]:
             raise VaueError(
-                    'Unexpected osrs_p value {0}.'.format(mode)) 
+                    'Unexpected osrs_p value {0}.'.format(osrs_p)) 
         self._osrs_p = osrs_p
         # check if osrs_t value is correct
         if osrs_t not in [BME280_OSRS_T_SKIPPED, BME280_OSRS_T_1, BME280_OSRS_T_2, 
                 BME280_OSRS_T_2, BME280_OSRS_T_4, BME280_OSRS_T_8, BME280_OSRS_T_16]:
             raise VaueError(
-                    'Unexpected osrs_t value {0}.'.format(mode)) 
+                    'Unexpected osrs_t value {0}.'.format(osrs_t)) 
         self._osrs_t = osrs_t
         # check if coef_filter value is correct
         if coef_filter not in [BME280_FILTER_OFF, BME280_FILTER_2, BME280_FILTER_4, 
                 BME280_FILTER_8, BME280_FILTER_16]:
             raise VaueError(
-                    'Unexpected coef_filter value {0}.'.format(mode)) 
+                    'Unexpected coef_filter value {0}.'.format(coef_filter)) 
         self._coef_filter = coef_filter
         # check if adderess value is correct
         if address not in [BME280_I2CADDR_DEFAULT, 0x77]:
             raise VaueError(
-                    'Unexpected address value {0}.'.format(mode)) 
+                    'Unexpected address value {0}.'.format(address)) 
         self._address = address
         # check if adderess value is correct
         if standby not in [BME280_T_SB_0_5, BME280_T_SB_62_5, BME280_T_SB_125, 
                 BME280_T_SB_250, BME280_T_SB_500, BME280_T_SB_1000, BME280_T_SB_10, BME280_T_SB_20]:
             raise VaueError(
-                    'Unexpected stanby value {0}.'.format(mode)) 
-        self._standby = stanby
+                    'Unexpected stanby value {0}.'.format(standby)) 
+        self._standby = standby
         # create i2c device
         if i2c is None:
             import Adafruit_GPIO.I2C as I2C
