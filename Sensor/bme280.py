@@ -104,7 +104,7 @@ class BME280(object):
 
     def __init__(self, mode=BME280_MODE_NORMAL, osrs_h = BME280_OSRS_H_1, 
             osrs_p = BME280_OSRS_P_1, osrs_t = BME280_OSRS_T_1, 
-            coef_filter = BME280_FILTER, address = BME280_I2CADDR_DEFAULT, 
+            coef_filter = BME280_FILTER_OFF, address = BME280_I2CADDR_DEFAULT, 
             i2c = None, standby = BME280_T_SB_1000, **kwargs):
         """TODO: to be defined1.
 
