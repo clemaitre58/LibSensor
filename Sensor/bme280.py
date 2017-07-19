@@ -219,18 +219,24 @@ class BME280(object):
             :returns: TODO
 
             """
+            while(self._device.readU8(BME280_STATUS) & 0x08):
+                time.sleep(0.002)
+            self.BME280_data = self._device.readList(BME280_PRESS_MSB, 8)
+            raw = ((self.BME280_data[3] << 16) | (self.BME280_data[4] << 8)  | self.BME280_data[5]) >> 4
             return raw
         def _read_raw_pressure(self):
             """TODO: Docstring for _read_raw_pressure.
             :returns: TODO
 
             """
+            raw = ((self.BME280_data[0] << 16) | (self.BME280_data[1] << 8)  | self.BME280_data[2]) >> 4
             return raw
         def _read_raw_humidity(self):
             """TODO: Docstring for _read_raw_humidity.
             :returns: TODO
 
             """
+            raw = ((self.BME280_data[6] << 8) | (self.BME280_data[7]))
             return raw
         def read_temperature(self):
             """TODO: Docstring for read_temperature.
@@ -239,6 +245,13 @@ class BME280(object):
             :returns: TODO
 
             """
+            # float in Python is double precision
+            UT = float(self.read_raw_temp())
+            var1 = (UT / 16384.0 - float(self.dig_T1) / 1024.0) * float(self.dig_T2)
+            var2 = ((UT / 131072.0 - float(self.dig_T1) / 8192.0) * (
+            UT / 131072.0 - float(self.dig_T1) / 8192.0)) * float(self.dig_T3)
+            self.t_fine = int(var1 + var2)
+            temp = (var1 + var2) / 5120.0
             return temp
         def read_pressure(self):
             """TODO: Docstring for read_pressure.
@@ -247,16 +260,37 @@ class BME280(object):
             :returns: TODO
 
             """
+            # float in Python is double precision
+            UT = float(self.read_raw_temp())
+            var1 = (UT / 16384.0 - float(self.dig_T1) / 1024.0) * float(self.dig_T2)
+            var2 = ((UT / 131072.0 - float(self.dig_T1) / 8192.0) * (
+            UT / 131072.0 - float(self.dig_T1) / 8192.0)) * float(self.dig_T3)
+            self.t_fine = int(var1 + var2)
+            temp = (var1 + var2) / 5120.0
             return p
         def read_humidity(self):
             """TODO: Docstring for read_humidity.
             :returns: TODO
 
             """
+            adc = float(self.read_raw_humidity())
+            # print 'Raw humidity = {0:d}'.format (adc)
+            h = float(self.t_fine) - 76800.0
+            h = (adc - (float(self.dig_H4) * 64.0 + float(self.dig_H5) / 16384.0 * h)) * (
+                    float(self.dig_H2) / 65536.0 * (1.0 + float(self.dig_H6) / 67108864.0 * h * (
+                        1.0 + float(self.dig_H3) / 67108864.0 * h)))
+            h = h * (1.0 - float(self.dig_H1) * h / 524288.0)
+            if h > 100:
+                h = 100
+            elif h < 0:
+                h = 0
             return h
         def read_dewpoint(self):
             """TODO: Docstring for read_dewpoint.
             :returns: TODO
 
             """
+            celsius = self.read_temperature()
+            humidity = self.read_humidity()
+            dewpoint = celsius - ((100 - humidity) / 5)
             return dewpoint
