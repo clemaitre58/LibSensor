@@ -127,8 +127,8 @@ class BME280(object):
         if osrs_h not in [BME280_OSRS_H_SKIPPED, BME280_OSRS_H_1, BME280_OSRS_H_2, 
                 BME280_OSRS_H_2, BME280_OSRS_H_4, BME280_OSRS_H_8, BME280_OSRS_H_16]:
             raise VaueError(
-        self._osrs_h = osrs_h
                     'Unexpected osrs_h value {0}.'.format(osrs_h))
+        self._osrs_h = osrs_h
         # check if osrs_h value is correct
         if osrs_p not in [BME280_OSRS_P_SKIPPED, BME280_OSRS_P_1, BME280_OSRS_P_2, 
                 BME280_OSRS_P_2, BME280_OSRS_P_4, BME280_OSRS_P_8, BME280_OSRS_P_16]:
