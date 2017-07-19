@@ -182,7 +182,7 @@ class BME280(object):
 
 
 
-        def _load_calibration():
+        def _load_calibration(self):
             """Load Calibration of the factory in order to compute real value
             :returns: TODO
 
@@ -214,7 +214,7 @@ class BME280(object):
             h5 = (h5 << 4)
             self.dig_H5 = h5 | (self._device.readU8(BME280_DIG_H5) >> 4 & 0x0F)
 
-        def _read_raw_temp(sel):
+        def _read_raw_temp(self):
             """TODO: Docstring for _read_raw_temp.
             :returns: TODO
 
