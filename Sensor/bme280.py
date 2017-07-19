@@ -182,7 +182,7 @@ class BME280(object):
 
 
 
-        def _load_calibration(self):
+        def _load_calibration():
             """Load Calibration of the factory in order to compute real value
             :returns: TODO
 
