@@ -144,7 +144,7 @@ class BME280(object):
                           BME280_OSRS_T_8, BME280_OSRS_T_16]:
             raise ValueError(
                     'Unexpected osrs_t value {0}.'.format(osrs_t))
-            self._osrs_t = osrs_t
+        self._osrs_t = osrs_t
         # check if coef_filter value is correct
         if coef_filter not in [BME280_FILTER_OFF, BME280_FILTER_2,
                                BME280_FILTER_4,
