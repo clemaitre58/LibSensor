@@ -257,7 +257,7 @@ class BME280(object):
 
         """
         # float in Python is double precision
-        UT = float(self.read_raw_temp())
+        UT = float(self._read_raw_temp())
         var1 = ((UT / 16384.0 - float(self.dig_T1) / 1024.0) *
                 float(self.dig_T2))
         var2 = ((UT / 131072.0 - float(self.dig_T1) / 8192.0) * (UT / 131072.0
@@ -273,7 +273,7 @@ class BME280(object):
         :returns: TODO
 
         """
-        adc = float(self.read_raw_pressure())
+        adc = float(self._read_raw_pressure())
         var1 = float(self.t_fine) / 2.0 - 64000.0
         var2 = var1 * var1 * float(self.dig_P6) / 32768.0
         var2 = var2 + var1 * float(self.dig_P5) * 2.0
@@ -295,7 +295,7 @@ class BME280(object):
         :returns: TODO
 
         """
-        adc = float(self.read_raw_humidity())
+        adc = float(self._read_raw_humidity())
         h = float(self.t_fine) - 76800.0
         h = (adc - (float(self.dig_H4) * 64.0 + float(self.dig_H5) /
              16384.0 * h)) * (float(self.dig_H2) / 65536.0 * (1.0 +
