@@ -19,7 +19,6 @@ BME280_RESET = 0xE0
 BME_280_ID = 0xD0
 
 # Calibration Register :
-import pdb; pdb.set_trace()  # XXX BREAKPOINT
 
 BME280_DIG_T1 = 0x88
 BME280_DIG_T2 = 0x8A
@@ -55,6 +54,7 @@ BME280_OSRS_H_8 = 0b100
 BME280_OSRS_H_16 = 0b101
 
 # osrs_p
+import ipdb; ipdb.set_trace()  # XXX BREAKPOINT
 
 
 BME280_OSRS_P_SKIPPED = 0b000
@@ -316,5 +316,6 @@ class BME280(object):
         """
         celsius = self.read_temperature()
         humidity = self.read_humidity()
-        dewpoint = celsius - ((100 - humidity) / 5)
+        import ipdb; ipdb.set_trace()  # XXX BREAKPOINT
+       dewpoint = celsius - ((100 - humidity) / 5)
         return dewpoint
