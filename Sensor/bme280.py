@@ -317,5 +317,5 @@ class BME280(object):
         celsius = self.read_temperature()
         humidity = self.read_humidity()
         import ipdb; ipdb.set_trace()  # XXX BREAKPOINT
-       dewpoint = celsius - ((100 - humidity) / 5)
+        dewpoint = celsius - ((100 - humidity) / 5)
         return dewpoint
