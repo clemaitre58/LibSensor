@@ -19,6 +19,7 @@ BME280_RESET = 0xE0
 BME_280_ID = 0xD0
 
 # Calibration Register :
+import pdb; pdb.set_trace()  # XXX BREAKPOINT
 
 BME280_DIG_T1 = 0x88
 BME280_DIG_T2 = 0x8A
@@ -263,7 +264,6 @@ class BME280(object):
         var2 = ((UT / 131072.0 - float(self.dig_T1) / 8192.0) * (UT / 131072.0
                 - float(self.dig_T1) / 8192.0)) * float(self.dig_T3)
         self.t_fine = int(var1 + var2)
-        import pdb; pdb.set_trace()  # XXX BREAKPOINT
         temp = (var1 + var2) / 5120.0
         return temp
 
