@@ -54,7 +54,6 @@ BME280_OSRS_H_8 = 0b100
 BME280_OSRS_H_16 = 0b101
 
 # osrs_p
-import ipdb; ipdb.set_trace()  # XXX BREAKPOINT
 
 
 BME280_OSRS_P_SKIPPED = 0b000
@@ -175,6 +174,8 @@ class BME280(object):
         except IOError:
             print("Unable to communicate with Sensor")
             exit()
+            import ipdb; ipdb.set_trace()  # XXX BREAKPOINT
+       
         # Load calibration valuesi
         self._load_calibration()
 
